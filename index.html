@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bài tập DOM</title>
-    <link rel="shortcut icon" type="image/png" href="./img/png-js.png">
+    <title>Bài tập hàm</title>
+    <link rel="shortcut icon" type="image/png" href="./img/function.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,188 +42,194 @@
                                 data-target="#bai4" type="button" role="tab" aria-controls="v-pills-settings"
                                 aria-selected="false">Bài
                                 4</button>
-                            <button class="nav-link btn-tab mb-2" id="v-pills-settings-tab" data-toggle="pill"
-                                data-target="#bai5" type="button" role="tab" aria-controls="v-pills-settings"
-                                aria-selected="false">Bài
-                                5</button>
                         </div>
                     </div>
                     <div class="col-12 col-md-8 col-lg-9 col-xl-10">
                         <div class="callout callout-color1">
-                            <p class="mb-0">❗ <b> Đây chỉ là gợi ý nên người làm có thể làm khác gợi ý, miễn đúng theo
-                                    yêu cầu trong file đề bài</b></p>
+                            <p class="mb-0">❗ <b> Đây chỉ là gợi ý nên người làm có thể làm khác gợi ý, miễn đúng theo yêu cầu trong file đề bài</b></p>
                         </div>
 
                         <div class="tab-content" id="v-pills-tabContent">
                             <div class="tab-pane fade show active" id="bai1" role="tabpanel"
                                 aria-labelledby="v-pills-home-tab">
-                                <h4 class="title">💰 Tính tiền lương nhân viên</h4>
+                                <h4 class="title">🏫 Quản lý tuyển sinh</h4>
                                 <div class="callout callout-color2">
                                     <p>💡 <b>Gợi ý:</b> <br>
-                                        Công thức: Lương = Lương 1 ngày * số ngày làm <br>
-                                        Kiến thức áp dụng:
-
                                     </p>
-                                    <ul>
-                                        <li>Tìm tới thẻ và lấy giá trị</li>
-                                        <li>Tạo hàm cơ bản</li>
-                                        <li>Gắn sự kiện click cho button</li>
-                                        <li>Thay đổi nội dung cho thẻ</li>
-                                        <li>Xử lý load trang với button của form</li>
-                                    </ul>
+                                    <details>
+                                        <summary>Mở rộng để xem thêm</summary>
+                                        <ul>
+                                            <li>Điểm chuẩn của hội đồng các bạn tự nhập thêm. Điểm chuẩn của 3 môn thường tối đa 30đ. <br>
+                                            Nên có thể lấy các điểm chuẩn như sau: 30,25,29</li>
+                                            <li>Ô nhập khu vực, đối tượng có thể tạo bằng input, dropdown hoặc radio. <br>
+                                                Nếu không thuộc khu vực hoặc đối tượng trong danh sách thì điểm khu vực và điểm đối tượng sẽ là 0
+                                            </li>
+                                            <li>Nếu có 1 trong 3 môn bị điểm 0 thì lặp tức cho rớt không cần kiểm tra tổng điểm có lớn hơn hoặc bằng điểm chuẩn hay không </li>
+                                        </ul>
+                                    </details>
                                 </div>
                                 <form class="row align-items-center px-2">
                                     <div class="col-12 col-lg-4">
-                                        <input type="number" id="inputNum1" class="form-control form-input"
-                                            placeholder="Nhập lương một ngày">
+                                        <input type="number" id="inputScore" class="form-control form-input"
+                                            placeholder="Điểm chuẩn">
                                     </div>
                                     <div class="col-12 col-lg-4">
-                                        <input type="number" id="inputNum2" class="form-control form-input"
-                                            placeholder="Số ngày làm">
+                                        <select name="location" class="form-control form-input" id="selLocation">
+                                            <option value="0">Chọn khu vực</option>
+                                            <option value="2">A</option>
+                                            <option value="1">B</option>
+                                            <option value="0.5">C</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-12 col-lg-4">
+                                        <select name="object" class="form-control form-input" id="selUser">
+                                            <option value="0">Chọn đối tượng</option>
+                                            <option value="2.5">1</option>
+                                            <option value="1.5">2</option>
+                                            <option value="1">3</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-12 col-lg-4 mt-3">
+                                        <input type="number" id="inputScore1" class="form-control form-input"
+                                            placeholder="Điểm môn thứ 1">
+                                    </div>
+                                    <div class="col-12 col-lg-4 mt-3">
+                                        <input type="number" id="inputScore2" class="form-control form-input"
+                                            placeholder="Điểm môn thứ 2">
+                                    </div>
+                                    <div class="col-12 col-lg-4 mt-3">
+                                        <input type="number" id="inputScore3" class="form-control form-input"
+                                            placeholder="Điểm môn thứ 3">
                                     </div>
                                     <div class="col-12 my-3">
-                                        <button type="button"  class="btn btn-style" id="btnSalary">Tính lương </button>
+                                        <button type="button" onclick="mainResult()" class="btn btn-style" id="btnResult">Kết Quả</button>
                                     </div>
                                     <div class="col-12 alert alert-success " role="alert">
-                                        👉 <span class="my-0" id="txtSalary"></span>
+                                        👉 <span class="my-0" id="txtResult"></span>
                                     </div>
-
                                 </form>
                             </div>
                             <div class="tab-pane fade" id="bai2" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                                <h4 class="title">📚 Tính giá trị trung bình</h4>
+                                <h4 class="title">🔋 Tính tiền điện</h4>
                                 <div class="callout callout-color2">
                                     <p>💡 <b>Gợi ý:</b> <br>
-                                        Kiến thức áp dụng:
                                     </p>
-                                    <ul>
-                                        <li>Tìm tới thẻ và lấy giá trị</li>
-                                        <li>Tạo hàm cơ bản</li>
-                                        <li>Gắn sự kiện click cho button</li>
-                                        <li>Thay đổi nội dung cho thẻ</li>
-                                        <li>Xử lý load trang với button của form</li>
-                                        <li>Xử lý ép kiểu dữ liệu</li>
-                                    </ul>
+                                    <details>
+                                        <summary>Mở rộng để xem thêm</summary>
+                                        <p class="px-3">Cách tính tiền điện gần giống với bài tính tiền Grab trên lớp </p>
+                                        <img class="px-3" src="./img/Bai2.JPG" alt="bai2">
+                                    </details>
                                 </div>
                                 <form class="row align-items-center px-2">
                                     <div class="col-12 col-lg-4">
-                                        <input type="number" id="num1" class="form-control form-input"
-                                            placeholder="Nhập số thứ 1">
+                                        <input type="text" id="inputName2" class="form-control form-input"
+                                            placeholder="Nhập họ tên">
                                     </div>
                                     <div class="col-12 col-lg-4">
-                                        <input type="number" id="num2" class="form-control form-input"
-                                            placeholder="Nhập số thứ 2">
+                                        <input type="number" id="inputKW" class="form-control form-input"
+                                            placeholder="Nhập số kw">
                                     </div>
-                                    <div class="col-12 col-lg-4">
-                                        <input type="number" id="num3" class="form-control form-input"
-                                            placeholder="Nhập số thứ 3">
-                                    </div>
-                                    <div class="col-12 col-lg-4 mt-3">
-                                        <input type="number" id="num4" class="form-control form-input"
-                                            placeholder="Nhập số thứ 4">
-                                    </div>
-                                    <div class="col-12 col-lg-4 mt-3">
-                                        <input type="number" id="num5" class="form-control form-input"
-                                            placeholder="Nhập số thứ 5">
-                                    </div>
+                                  
                                     <div class="col-12 my-3">
-                                        <button type="button"  class="btn btn-style" id="btnAverage">Tính trung bình
+                                        <button type="button" onclick="mainBill()" class="btn btn-style" id="btnBill">Tính tiền điện
                                         </button>
                                     </div>
                                     <div class="col-12 alert alert-success " role="alert">
-                                        👉 <span class="my-0" id="txtAverage"></span>
+                                        👉 <span class="my-0" id="txtBill"></span>
                                     </div>
-
                                 </form>
                             </div>
 
                             <div class="tab-pane fade" id="bai3" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-                                <h4 class="title">💱 Quy đổi tiền</h4>
+                                <h4 class="title">💰 Tính thuế thu nhập cá nhân</h4>
                                 <div class="callout callout-color2">
                                     <p>💡 <b>Gợi ý:</b> <br>
-                                        Kiến thức áp dụng:
                                     </p>
-                                    <ul>
-                                        <li>Áp dụng các kiến thức như bài 1 và 2</li>
-                                        <li>Giá USD mặc định 1 USD = 23500</li>
-                                        <li>Có thể dùng thêm NumberFormat để số tiền hiển thị đẹp hơn: <a
-                                                href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat"
-                                                target="_blank">NumberFormat</a> <br>
-                                            VD: new Intl.NumberFormat('vn-VN').format(23500); => 23,500
-                                        </li>
-
-                                    </ul>
+                                    <details>
+                                        <summary>Mở rộng để xem thêm</summary>
+                                        <ul>
+                                            <li>Tổng thu nhập năm các bạn tự nhập thêm. Giả sử 1 tháng thu nhập 10tr thì 1 năm sẽ là 10 x 12 = 120tr => các bạn sẽ nhập 120000000</li>
+                                            <li>Demo hiện tại đang tính % thuế theo điều kiện mà thu nhập chịu thuế rơi vào. Vd: thu nhập chịu thuế là 110tr thì tính 10% của 110tr => 110tr * 0.1
+                                            </li>
+                                            <li>Do đề bài không ghi rõ yêu cầu tính thuế nên cũng có thể tính theo cách chia ra từng đoạn thuế giống bài tính tiền grab. Vd: 110tr => 60tr *0.05 + (110tr-60tr) * 0.1</li>
+                                            <li>Sử dụng input có type number thì khi nhập 120000000, có thể nhập ngắn gọn thành 120e+6 </li>
+                                            <li>Đối với các con số hàng triệu có nhiều số 0, có thể viết ngắn gọn trong code như sau: <br> 4tr => 4000000 => 4e+6</li>
+                                            <li>Dùng NumberFormat để số tiền hiển thị đẹp hơn: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat" target="_blank">NumberFormat </a> </li>
+                                        </ul>
+                                    </details>
                                 </div>
                                 <form class="row align-items-center px-2">
                                     <div class="col-12 col-lg-4">
-                                        <input type="number" id="inputUsd" class="form-control form-input"
-                                            placeholder="Nhập số tiền USD">
+                                        <input type="text" id="inputName3" class="form-control form-input"
+                                            placeholder="Nhập họ tên">
                                     </div>
-                                   
-                                    <div class="col-12 my-3">
-                                        <button type="button" class="btn btn-style" id="btnVnd">Quy đổi tiền </button>
+                                    <div class="col-12 col-lg-4">
+                                        <input type="number" id="inputInYear" class="form-control form-input"
+                                            placeholder="Tổng thu nhập năm">
                                     </div>
-                                    <div class="col-12 alert alert-success " role="alert">
-                                        👉 <span class="my-0" id="txtVnd"></span>
+                                    <div class="col-12 col-lg-4">
+                                        <input type="number" id="inputPerson" class="form-control form-input"
+                                            placeholder="Số người phụ thuộc">
                                     </div>
 
+                                    <div class="col-12 my-3">
+                                        <button type="button" onclick="mainTax()" class="btn btn-style" id="btnTax">Tính tiền thuế </button>
+                                    </div>
+                                    <div class="col-12 alert alert-success " role="alert">
+                                        👉 <span class="my-0" id="txtTax"></span>
+                                    </div>
                                 </form>
                             </div>
                             <div class="tab-pane fade" id="bai4" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-                                <h4 class="title">📏 Tính diện tích, chu vi hình chữ nhật</h4>
+                                <h4 class="title">🕸️ Tính tiền cáp</h4>
                                 <div class="callout callout-color2">
                                     <p>💡 <b>Gợi ý:</b> <br>
-                                        Kiến thức áp dụng:
                                     </p>
-                                    <ul>
-                                        <li>Áp dụng các kiến thức như các bài trước</li>
-                                        <li>Diện tích: dài x rộng</li>
-                                        <li>Chu vi: (dài + rộng) x 2</li>
-                                    </ul>
+                                    <details>
+                                        <summary>Mở rộng để xem thêm</summary>
+                                        <ul>
+                                            <li>Sử dụng event onchange của dropdown để xử lý ẩn hiện cho ô nhập số kết nối khi chọn loại khách hàng: <a href="w3schools.com/jsref/event_onchange.asp" target="_blank">Onchange</a>
+                                            </li>
+                                            <li>Đối với loại khách hàng Doanh Nghiệp, tổng 10 kết nối đầu là 75$ <br>
+                                                => đây là giá trọn gói, nếu doanh nghiệp lắp đặt số kết nối nhỏ hơn 10 thì vẫn phải đóng 75$. <br>
+                                                Vd: 6 kết nối thì vẫn sẽ cộng 75$ vào tổng tiền. <br>
+                                                => Nếu lắp trên 10 kết nối thì kết nối thứ 11 trở đi sẽ tính 5$/kết nối.
+                                            </li>
+                                        </ul>
+                                    </details>
                                 </div>
                                 <form class="row align-items-center px-2">
                                     <div class="col-12 col-lg-4">
-                                        <input type="number" id="inputLength" class="form-control form-input"
-                                            placeholder="Nhập chiều dài">
+                                        <select name="object" class="form-control form-input" id="selCustomer" onchange="disableConnect()">
+                                            <option value="0">Chọn loại khách hàng</option>
+                                            <option value="personal">Nhà Dân</option>
+                                            <option value="company">Doanh Nghiệp</option>
+                                        </select>
                                     </div>
                                     <div class="col-12 col-lg-4">
-                                        <input type="number" id="inputWidth" class="form-control form-input"
-                                            placeholder="Nhập chiều rộng">
+                                        <input type="text" id="inputCode" class="form-control form-input"
+                                            placeholder="Nhập mã khách hàng">
+                                    </div>
+                                    <div class="col-12 col-lg-4">
+                                        <input type="number" id="inputChannel" class="form-control form-input"
+                                            placeholder="Số kênh cao cấp">
+                                    </div>
+                                    <div class="col-12 col-lg-4 mt-3">
+                                        <input type="number" style="display: none;" id="inputConnect" class="form-control form-input"
+                                            placeholder="Số kết nối">
                                     </div>
                                     <div class="col-12 my-3">
-                                        <button type="button" class="btn btn-style" id="btnPerimeter">Tính</button>
+                                        <button type="button" onclick="mainCBill()" class="btn btn-style" id="btnCBill">Tính tiền cáp</button>
                                     </div>
                                     <div class="col-12 alert alert-success " role="alert">
-                                        👉 <span class="my-0" id="txtPerimeter"></span>
+                                        👉 <span class="my-0" id="txtCBill"></span>
                                     </div>
 
                                 </form>
                             </div>
-                            <div class="tab-pane fade" id="bai5" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-                                <h4 class="title">🧮 Tính tổng 2 ký số</h4>
-                                <div class="callout callout-color2">
-                                    <p>💡 <b>Gợi ý:</b> <br>
-                                        Kiến thức áp dụng:
-                                    </p>
-                                    <ul>
-                                        <li>Áp dụng cách tính như demo tổng 3 ký số trên lớp</li>
-                                    </ul>
-                                </div>
-                                <form class="row align-items-center px-2">
-                                    <div class="col-12 col-lg-4">
-                                        <input type="number" id="inputNumber" class="form-control form-input"
-                                            placeholder="Nhập số có hai chữ số">
-                                    </div>
-                                   
-                                    <div class="col-12 my-3">
-                                        <button type="button" class="btn btn-style" id="btnSum">Tính tổng </button>
-                                    </div>
-                                    <div class="col-12 alert alert-success " role="alert">
-                                        👉 <span class="my-0" id="txtSum"></span>
-                                    </div>
-
+                        
                                 </form>
-                           </div>
+                            </div>
                         </div>
                     </div>
                 </div>
